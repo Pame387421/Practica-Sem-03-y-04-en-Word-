@@ -1,0 +1,85 @@
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JEditorPane;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Login extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	private JTextField txtusuario;
+	private JPasswordField txtpassword;
+
+	/**
+	 * Create the panel.
+	 */
+	public Login() {
+		setLayout(null);
+		
+		JButton btnIngrese = new JButton("INGRESAR");
+		btnIngrese.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String valorPass = new String(txtpassword.getPassword());
+		        if(txtusuario.getText().equals("12345678")&&valorPass.equals("12345")){
+		            Panel_Principal p=new Panel_Principal();
+		            p.setVisible(true);
+		            //this.setVisible(false);
+		        }else if(txtusuario.getText().equals("admin")&&valorPass.equals("admin123")){
+		            Panel_Administrador p=new Panel_Administrador();
+		            p.setVisible(true);
+		            //this.setVisible(false);
+		        }
+		        else{
+		            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
+		        }
+				
+			}
+		});
+		btnIngrese.setBounds(188, 236, 85, 21);
+		add(btnIngrese);
+		
+		JLabel lblNewLabel_1 = new JLabel("USUARIO");
+		lblNewLabel_1.setBounds(57, 74, 85, 30);
+		add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("PASSWORD");
+		lblNewLabel_2.setBounds(57, 114, 77, 27);
+		add(lblNewLabel_2);
+		
+		txtusuario = new JTextField();
+		txtusuario.setBounds(139, 80, 203, 19);
+		add(txtusuario);
+		txtusuario.setColumns(10);
+		
+		txtpassword = new JPasswordField();
+		txtpassword.setBounds(139, 114, 203, 19);
+		add(txtpassword);
+		
+		JCheckBox jCheckBox1 = new JCheckBox("RECORDARME");
+		jCheckBox1.setBounds(188, 193, 93, 21);
+		add(jCheckBox1);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.CYAN);
+		panel.setBounds(0, 0, 450, 64);
+		add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("INGRESO AL SISTEMA");
+		lblNewLabel.setBounds(148, 23, 162, 20);
+		panel.add(lblNewLabel);
+		lblNewLabel.setBackground(new Color(0, 255, 255));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+
+	}
+}
